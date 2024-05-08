@@ -1,0 +1,72 @@
+@use 'config/variaveis.scss';
+@use 'secoes/cabecalho.scss';
+@use 'secoes/produtos.scss';
+@use 'sass:math';
+
+@function pixelParaEm($alvoEmPixel, $contextoEmPixel: 16px ) {
+    @return math.div($alvoEmPixel, $contextoEmPixel)+em;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: variaveis.$fonteprincipal;
+}
+
+body {
+    background-color: variaveis.$cordeFundo;
+}
+
+li {
+    list-style: none;
+}
+
+.container {
+    max-width: 1024px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+section {
+    padding: 56px 0;
+}
+
+@media screen and (max-width: variaveis.$mobile) {
+    .menu {
+        display: none;
+    }
+
+    .branding {
+        padding-left: 20px;
+    }
+    
+    .container {
+        max-width: 80%;
+    }
+
+    .products {
+        display: block;
+        flex-direction: column;
+
+        li {
+            margin-bottom: 20px;
+            padding-bottom: 30px;
+            font-size: 20px;
+        }
+    }
+}
+
+@media screen and (max-width: variaveis.$ipad) {
+    .container {
+        max-width: 80%;
+    }
+
+    .products {
+        grid-template-columns: repeat(2, 50%);
+
+        li{
+            font-size: 20px;
+        }
+    }
+}
